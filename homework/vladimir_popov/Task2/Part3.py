@@ -1,4 +1,4 @@
-from math import *
+from math import sqrt
 
 a, b = 4, 5
 

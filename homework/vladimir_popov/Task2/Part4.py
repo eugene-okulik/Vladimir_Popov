@@ -1,4 +1,4 @@
-from math import *
+from cmath import sqrt
 
 a, b = 4, 5
 
