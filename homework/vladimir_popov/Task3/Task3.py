@@ -11,4 +11,3 @@ del my_dict["dict"]["one"]
 my_dict["set"].remove(3)
 my_dict["set"].add(6)
 print(my_dict)
-
