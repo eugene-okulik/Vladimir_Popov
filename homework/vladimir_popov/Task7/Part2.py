@@ -7,8 +7,7 @@ def fibonacci():
 
 
 def give_number(n):
-    n -= 1
-    count = 0
+    count = 1
     for number in fibonacci():
         if count == n:
             print(number)
