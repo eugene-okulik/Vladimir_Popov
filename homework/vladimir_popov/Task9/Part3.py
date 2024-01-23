@@ -16,8 +16,8 @@ def choose_operator(func):
             operation = '*'
             result = func(first, second, operation)
         return result
-    
-    return  opertator
+
+    return opertator
 
 
 @choose_operator

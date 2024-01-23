@@ -4,13 +4,13 @@ def finish_me(func):
         func(text)
         print("finished")
         return func
-    
+
     return finish_function
 
 
 @finish_me
 def example(text):
     print(text)
-    
+
 
 example('print me')
