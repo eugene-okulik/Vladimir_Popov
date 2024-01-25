@@ -1,13 +1,15 @@
+text = "Etiam tincidunt neque erat, quis molestie enim imperdiet vel.\
+        Integer urna nisl, facilisis vitae semper at, dignissim vitae libero"
 
-secret_digit = 3
+new_text = []
 
-print("Угадайте цифру")
+for word in text.split():
+    if "," in word:
+        word = word.replace(",", "ing,")
+    elif "." in word:
+        word = word.replace(".", "ing.")
+    else:
+        word += "ing"
+    new_text.append(word)
 
-while True:
-    user_digit = int(input("Введите цифру: "))
-
-    if user_digit != secret_digit:
-        print("Попробуйте снова")
-    elif user_digit == secret_digit:
-        print("Поздравляю! Вы угадали!")
-        break
+print(" ".join(new_text))

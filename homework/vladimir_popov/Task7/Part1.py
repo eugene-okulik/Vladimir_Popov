@@ -1,10 +1,13 @@
-from random import random, randint, choice
 
-salary = int(input("Введите зарплату: "))
+secret_digit = 3
 
-bonus = choice([True, False])
+print("Угадайте цифру")
 
-if bonus:
-    print(f"${salary + randint(0, 500)}")
-else:
-    print(f"${salary}")
+while True:
+    user_digit = int(input("Введите цифру: "))
+
+    if user_digit != secret_digit:
+        print("Попробуйте снова")
+    elif user_digit == secret_digit:
+        print("Поздравляю! Вы угадали!")
+        break
