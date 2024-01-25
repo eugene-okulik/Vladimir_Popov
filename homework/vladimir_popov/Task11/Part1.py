@@ -13,11 +13,11 @@ class Book:
 
     def book_info(self):
         if self.reserved:
-            print(f"Название: {self.title}, Автор: {self.author},
-                  страниц: {self.page_count}, материал: {self.material}, зарезервирована"
+            print(f'Название: {self.title}, Автор: {self.author},\
+                  страниц: {self.page_count}, материал: {self.material}, зарезервирована'
                   )
         else:
-            print(f"Название: {self.title}, Автор: {self.author},
+            print(f"Название: {self.title}, Автор: {self.author},\
                   страниц: {self.page_count}, материал: {self.material}"
                   )
 
@@ -45,15 +45,13 @@ class School_Book(Book):
 
     def book_info(self):
         if self.reserved:
-            print(
-                f"Название: {self.title}, Автор: {self.author},
-                страниц: {self.page_count}, предмет: {self.subject}, класс: {self.school_class}, зарезервирована"
-            )
+            print(f"Название: {self.title}, Автор: {self.author},\
+                  страниц: {self.page_count}, предмет: {self.subject}, класс: {self.school_class}, зарезервирована"
+                  )
         else:
-            print(
-                f"Название: {self.title}, Автор: {self.author},
-                страниц: {self.page_count}, предмет: {self.subject}, класс: {self.school_class}"
-            )
+            print(f"Название: {self.title}, Автор: {self.author},\
+                  страниц: {self.page_count}, предмет: {self.subject}, класс: {self.school_class}"
+                  )
 
 
 school_book1 = School_Book(title="Алгебра", author="Иванов",
