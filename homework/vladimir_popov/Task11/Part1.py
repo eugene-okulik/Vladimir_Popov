@@ -13,15 +13,13 @@ class Book:
 
     def book_info(self):
         if self.reserved:
-            print(
-                f"Название: {self.title}, Автор: {self.author},
-                страниц: {self.page_count}, материал: {self.material}, зарезервирована"
-            )
+            print(f"Название: {self.title}, Автор: {self.author},
+                  страниц: {self.page_count}, материал: {self.material}, зарезервирована"
+                  )
         else:
-            print(
-                f"Название: {self.title}, Автор: {self.author},
-                страниц: {self.page_count}, материал: {self.material}"
-            )
+            print(f"Название: {self.title}, Автор: {self.author},
+                  страниц: {self.page_count}, материал: {self.material}"
+                  )
 
 
 book_1 = Book("Идиот", "Достоевский", 500, 12345, False)
