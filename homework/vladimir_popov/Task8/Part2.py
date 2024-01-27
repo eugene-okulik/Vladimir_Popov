@@ -1,8 +1,21 @@
-import datetime
 
-data_time = "Jan 15, 2023 - 12:05:33"
+def fibonacci():
+    a, b = 0, 1
+    while True:
+        yield a
+        a, b = b, a + b
 
-python_date = datetime.datetime.strptime(data_time, '%b %d, %Y - %H:%M:%S')
 
-print(python_date.strftime("%B"))
-print(python_date.strftime("%d.%m.%Y, %H:%M"))
+def give_number(n):
+    count = 1
+    for number in fibonacci():
+        if count == n:
+            print(number)
+            break
+        count += 1
+
+
+give_number(5)
+give_number(200)
+give_number(1000)
+give_number(100000)

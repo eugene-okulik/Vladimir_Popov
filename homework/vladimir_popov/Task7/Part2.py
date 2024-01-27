@@ -1,21 +1,9 @@
 
-def fibonacci():
-    a, b = 0, 1
-    while True:
-        yield a
-        a, b = b, a + b
+words = {'I': 3, 'love': 5, 'Python': 1, '!': 50}
 
-
-def give_number(n):
-    count = 1
-    for number in fibonacci():
-        if count == n:
-            print(number)
-            break
-        count += 1
-
-
-give_number(5)
-give_number(200)
-give_number(1000)
-give_number(100000)
+for key, value in words.items():
+    i = 0
+    while i < value:
+        print(key, end="")
+        i += 1
+    print()

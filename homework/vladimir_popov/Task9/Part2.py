@@ -1,17 +1,8 @@
+import datetime
 
-def repeat_me(func):
+data_time = "Jan 15, 2023 - 12:05:33"
 
-    def repeat_function(*args, count):
-        for _ in range(count):
-            func(*args)
-        return func
+python_date = datetime.datetime.strptime(data_time, '%b %d, %Y - %H:%M:%S')
 
-    return repeat_function
-
-
-@repeat_me
-def example(text):
-    print(text)
-
-
-example('print me', count=2)
+print(python_date.strftime("%B"))
+print(python_date.strftime("%d.%m.%Y, %H:%M"))
