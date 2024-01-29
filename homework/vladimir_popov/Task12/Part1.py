@@ -1,5 +1,6 @@
 from random import randint
 
+
 class Flower:
 
     def __init__(self, name, colour, type, freshness, length, lifetime, price):
