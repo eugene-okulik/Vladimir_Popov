@@ -26,7 +26,7 @@ for date_time in read_file():
 first_date_time, second_date_time, third_date_time = date_time_list
 now = datetime.datetime.now()
 
-one_week_ago = first_date_time - datetime.timedelta(days=7)
+one_week_ago = first_date_time + datetime.timedelta(days=7)
 week_day = datetime.datetime.isoweekday(second_date_time)
 days_ago, time_ago = str(now - third_date_time).split(",")
 
