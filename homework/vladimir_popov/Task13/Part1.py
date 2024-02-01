@@ -13,9 +13,6 @@ def read_file():
             index_date_time, *task = str.split(" - ")
             yield index_date_time.split(". ")
 
-
-date_time_list = []
-
 week_days = {1: "понедельник", 2: "вторник", 3: "среда", 4: "четверг", 5: "пятница", 6: "суббота", 7: "воскресенье"}
 
 now = datetime.datetime.now()
@@ -29,4 +26,3 @@ for index, date_time in read_file():
     elif int(index) == 3:
         days_ago, time_ago = str(now - date_time).split(",")
         print(days_ago)
-
