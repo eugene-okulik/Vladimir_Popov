@@ -72,17 +72,19 @@ insert_new_marks_value = (90, lesson2_id, student_id)
 cursor.execute(insert_new_marks_query, insert_new_marks_value)
 
 
-all_info_query = f'''SELECT s.name, s.second_name, g.title, b.title, s2.title , l.title, m.value
+all_info_query = f'''SELECT s.name, s.second_name, g.title as group_title, b.title as book_title, 
+s2.title as subj_title, l.title as lesson_title, m.value
 From students s
 JOIN `groups` g ON g.id = s.group_id
 JOIN books b ON s.id = b.taken_by_student_id
 JOIN marks m ON s.id = m.student_id
 JOIN lessons l ON m.lesson_id = l.id
 JOIN subjets s2 ON l.subject_id = s2.id
-WHERE s.id = {student_id}
+WHERE s.id = %s
 '''
 
-cursor.execute(all_info_query)
+student_id_value = (student_id, )
+cursor.execute(all_info_query, student_id_value)
 print(cursor.fetchall())
 
 db.commit()
