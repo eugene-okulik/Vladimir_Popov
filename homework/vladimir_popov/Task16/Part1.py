@@ -10,11 +10,11 @@ data_file_path = os.path.join(homework_path, "eugene_okulik", "Lesson_16", "hw_d
 dotenv.load_dotenv()
 
 db = mysql.connect(
-   user=os.getenv('DB_USER'),
-   passwd=os.getenv('DB_PASSW'),
-   host=os.getenv('DB_HOST'),
-   port=os.getenv('DB_PORT'),
-   database=os.getenv('DB_NAME')
+    user=os.getenv('DB_USER'),
+    passwd=os.getenv('DB_PASSW'),
+    host=os.getenv('DB_HOST'),
+    port=os.getenv('DB_PORT'),
+    database=os.getenv('DB_NAME')
 )
 
 cursor = db.cursor(dictionary=True, buffered=True)
@@ -44,6 +44,7 @@ with open(data_file_path) as csv_file:
             '''
             student_id = (student_id['id'],)
             cursor.execute(all_info_query, student_id)
-            print(cursor.fetchall())
+            info_student = cursor.fetchall()
+            print(f'Info about student {student_name}: {info_student}')
 
 db.close()
