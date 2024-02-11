@@ -46,3 +46,7 @@ JOIN marks m ON s.id = m.student_id
 JOIN lessons l ON m.lesson_id = l.id 
 JOIN subjets s2 ON l.subject_id = s2.id 
 WHERE s.id = 250
+
+
+SELECT * FROM students WHERE name='Ivan'
+
