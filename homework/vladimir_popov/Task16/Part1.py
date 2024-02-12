@@ -23,28 +23,37 @@ with open(data_file_path) as csv_file:
     file_data = csv.DictReader(csv_file)
     data = []
     for row in file_data:
-        student_name = row['name']
-        select_student_query = "SELECT id FROM students WHERE name = %s"
-        select_student_value = (student_name,)
-        cursor.execute(select_student_query, select_student_value)
-        student_id = cursor.fetchone()
-
-        if not student_id:
-            print(f'There is no info for student with name {student_name}')
+        query = '''
+        SELECT s.name, s.second_name, g.title as group_title, b.title as book_title,
+        s2.title as subj_title, l.title as lesson_title, m.value
+        From students s
+        JOIN `groups` g ON g.id = s.group_id
+        JOIN books b ON s.id = b.taken_by_student_id
+        JOIN marks m ON s.id = m.student_id
+        JOIN lessons l ON m.lesson_id = l.id
+        JOIN subjets s2 ON l.subject_id = s2.id
+        WHERE s.name = %s
+        AND s.second_name = %s
+        AND g.title = %s
+        AND b.title = %s
+        AND s2.title = %s
+        AND l.title = %s
+        AND m.value = %s
+        '''
+        value = (
+            row['name'],
+            row['second_name'],
+            row['group_title'],
+            row['book_title'],
+            row['subject_title'],
+            row['lesson_title'],
+            row['mark_value']
+        )
+        cursor.execute(query, value)
+        student_info = cursor.fetchone()
+        if student_info is None:
+            print("There is no info")
         else:
-            all_info_query = '''SELECT s.name, s.second_name, g.title as group_title, b.title as book_title,
-            s2.title as subj_title, l.title as lesson_title, m.value
-            From students s
-            JOIN `groups` g ON g.id = s.group_id
-            JOIN books b ON s.id = b.taken_by_student_id
-            JOIN marks m ON s.id = m.student_id
-            JOIN lessons l ON m.lesson_id = l.id
-            JOIN subjets s2 ON l.subject_id = s2.id
-            WHERE s.id = %s
-            '''
-            student_id = (student_id['id'],)
-            cursor.execute(all_info_query, student_id)
-            info_student = cursor.fetchall()
-            print(f'Info about student {student_name}: {info_student}')
+            print(student_info)
 
 db.close()
