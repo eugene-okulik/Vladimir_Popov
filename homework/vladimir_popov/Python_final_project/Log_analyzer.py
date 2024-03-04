@@ -43,7 +43,7 @@ class LogAnalyzer:
                         error_text = []
                     current_date = date_match
                     error_text.append(line.strip())
-                except:
+                except Exception:
                     error_text.append(line.strip())
 
             if current_date:
@@ -108,7 +108,6 @@ class LogAnalyzer:
                                         start = start_word_index - len(value[:start_word_index])
 
                                     end = end_word_index + 150
-
                                     print(
                                     f'{Fore.LIGHTMAGENTA_EX} [{key}] {Style.RESET_ALL}'
                                     f'{value[start:start_word_index]}'
@@ -118,7 +117,7 @@ class LogAnalyzer:
             elif logs_text and logs_extext:
                 for block in self.create_blocks():
                     for key, value in block.items():
-                        value = ''.join(value)
+                        value = ' '.join(value)
                         if key in logs_text:
                             if key in logs_extext:
                                 start_word_index = value.index(self.text)
@@ -130,7 +129,6 @@ class LogAnalyzer:
                                     start = start_word_index - len(value[:start_word_index])
 
                                 end = end_word_index + 150
-
                                 print(
                                 f'{Fore.LIGHTMAGENTA_EX} [{key}] {Style.RESET_ALL}'
                                 f'{value[start:start_word_index]}'
@@ -151,7 +149,6 @@ class LogAnalyzer:
                                 start = start_word_index - len(value[:start_word_index])
 
                             end = end_word_index + 150
-
                             print(
                             f'{Fore.LIGHTMAGENTA_EX} [{key}] {Style.RESET_ALL}'
                             f'{value[start:start_word_index]}'
@@ -162,24 +159,36 @@ class LogAnalyzer:
             if logs_date and logs_extext:
                 for block in self.create_blocks():
                     for key, value in block.items():
-                        value = ''.join(value)
+                        value = ' '.join(value)
                         if key in logs_date:
                             if key in logs_extext:
-                                print(f"{Fore.LIGHTMAGENTA_EX} [{key}] {Style.RESET_ALL} {''.join(value)[:300]}")
-            else: 
+                                if self.fulltext == "True":
+                                    print(f"{Fore.LIGHTMAGENTA_EX} [{key}] {Style.RESET_ALL} {''.join(value)}")
+                                else:
+                                    print(f"{Fore.LIGHTMAGENTA_EX} [{key}] {Style.RESET_ALL} {''.join(value)[:300]}")
+            else:
                 for block in self.create_blocks():
                     for key, value in block.items():
-                        value = ''.join(value)
+                        value = ' '.join(value)
                         if key in logs_date:
-                            print(f"{Fore.LIGHTMAGENTA_EX} [{key}] {Style.RESET_ALL} {''.join(value)[:300]}")  
+                            if self.fulltext == "True":
+                                print(f"{Fore.LIGHTMAGENTA_EX} [{key}] {Style.RESET_ALL} {''.join(value)}")
+                            else:
+                                print(f"{Fore.LIGHTMAGENTA_EX} [{key}] {Style.RESET_ALL} {''.join(value)[:300]}")
         elif logs_extext:
             for block in self.create_blocks():
                 for key, value in block.items():
                     if key in logs_extext:
-                        print(
-                        f'{Fore.LIGHTMAGENTA_EX} [{key}] {Style.RESET_ALL}'
-                        f'{value[:300]}'
-                        )
+                        if self.fulltext == "True":
+                            print(
+                            f'{Fore.LIGHTMAGENTA_EX} [{key}] {Style.RESET_ALL}'
+                            f'{value}'
+                            )
+                        else:
+                            print(
+                            f'{Fore.LIGHTMAGENTA_EX} [{key}] {Style.RESET_ALL}'
+                            f'{value[:300]}'
+                            )
 
     def find_by_text(self):
         log_by_text_list = []
@@ -199,39 +208,28 @@ class LogAnalyzer:
             try:
                 border1, border2 = self.date.split('/')
                 for log_block in self.create_blocks():
-                    for key, value in log_block.items():
+                    for key in log_block.keys():
                         try:
                             border1 = str(datetime.strptime(border1[:23], '%Y-%m-%d %H:%M:%S.%f'))[:-3]
                             border2 = str(datetime.strptime(border2[:23], '%Y-%m-%d %H:%M:%S.%f'))[:-3]
                             if key >= border1 and key <= border2:
                                 date_found = True
-                                if self.fulltext == "True":
-                                        log_by_date_list.append(key)
-                                else:
-                                        log_by_date_list.append(key)
-                        except:
+                                log_by_date_list.append(key)
+                        except Exception:
                             if border1 == "..":
                                 if key <= border2:
                                     date_found = True
-                                    if self.fulltext == "True":
-                                        log_by_date_list.append(key)
-                                    else:
-                                        log_by_date_list.append(key)
+                                    log_by_date_list.append(key)
                             if border2 == "..":
                                 if key >= border1:
                                     date_found = True
-                                    if self.fulltext == "True":
-                                        log_by_date_list.append(key)
-                                    else:
-                                        log_by_date_list.append(key)
-            except:
+                                    log_by_date_list.append(key)
+
+            except Exception:
                 for log_block in self.create_blocks():
-                    if self.fulltext == "True":
-                        log_by_date_list.append(key)
-                    else:
-                        log_by_date_list.append(key)
+                    log_by_date_list.append(key)
                     date_found = True
-        except:
+        except Exception:
             if date_found == False:
                 print(f'Logs with date {Fore.RED} {self.date} {Style.RESET_ALL} not found')
 
