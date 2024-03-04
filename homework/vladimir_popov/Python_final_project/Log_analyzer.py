@@ -88,12 +88,12 @@ class LogAnalyzer:
                                         end = end_word_index + 150
 
                                         print(
-                                        f'{Fore.LIGHTMAGENTA_EX} [{key}] {Style.RESET_ALL}'
-                                        f'{value[start:start_word_index]}'
-                                        f'{Style.BRIGHT}{Fore.LIGHTGREEN_EX}{self.text}'
-                                        f'{Style.RESET_ALL}{value[end_word_index:end]}'
-                                        )
-                else:   
+                                            f'{Fore.LIGHTMAGENTA_EX} [{key}] {Style.RESET_ALL}'
+                                            f'{value[start:start_word_index]}'
+                                            f'{Style.BRIGHT}{Fore.LIGHTGREEN_EX}{self.text}'
+                                            f'{Style.RESET_ALL}{value[end_word_index:end]}'
+                                            )
+                else:
                     for block in self.create_blocks():
                         for key, value in block.items():
                             value = ' '.join(value)
@@ -109,11 +109,11 @@ class LogAnalyzer:
 
                                     end = end_word_index + 150
                                     print(
-                                    f'{Fore.LIGHTMAGENTA_EX} [{key}] {Style.RESET_ALL}'
-                                    f'{value[start:start_word_index]}'
-                                    f'{Style.BRIGHT}{Fore.LIGHTGREEN_EX}{self.text}'
-                                    f'{Style.RESET_ALL}{value[end_word_index:end]}'
-                                    )
+                                        f'{Fore.LIGHTMAGENTA_EX} [{key}] {Style.RESET_ALL}'
+                                        f'{value[start:start_word_index]}'
+                                        f'{Style.BRIGHT}{Fore.LIGHTGREEN_EX}{self.text}'
+                                        f'{Style.RESET_ALL}{value[end_word_index:end]}'
+                                        )
             elif logs_text and logs_extext:
                 for block in self.create_blocks():
                     for key, value in block.items():
@@ -130,12 +130,12 @@ class LogAnalyzer:
 
                                 end = end_word_index + 150
                                 print(
-                                f'{Fore.LIGHTMAGENTA_EX} [{key}] {Style.RESET_ALL}'
-                                f'{value[start:start_word_index]}'
-                                f'{Style.BRIGHT}{Fore.LIGHTGREEN_EX}{self.text}'
-                                f'{Style.RESET_ALL}{value[end_word_index:end]}'
-                                )
-            else: 
+                                    f'{Fore.LIGHTMAGENTA_EX} [{key}] {Style.RESET_ALL}'
+                                    f'{value[start:start_word_index]}'
+                                    f'{Style.BRIGHT}{Fore.LIGHTGREEN_EX}{self.text}'
+                                    f'{Style.RESET_ALL}{value[end_word_index:end]}'
+                                    )
+            else:
                 for block in self.create_blocks():
                     for key, value in block.items():
                         value = ' '.join(value)
@@ -150,11 +150,11 @@ class LogAnalyzer:
 
                             end = end_word_index + 150
                             print(
-                            f'{Fore.LIGHTMAGENTA_EX} [{key}] {Style.RESET_ALL}'
-                            f'{value[start:start_word_index]}'
-                            f'{Style.BRIGHT}{Fore.LIGHTGREEN_EX}{self.text}'
-                            f'{Style.RESET_ALL}{value[end_word_index:end]}'
-                            )
+                                f'{Fore.LIGHTMAGENTA_EX} [{key}] {Style.RESET_ALL}'
+                                f'{value[start:start_word_index]}'
+                                f'{Style.BRIGHT}{Fore.LIGHTGREEN_EX}{self.text}'
+                                f'{Style.RESET_ALL}{value[end_word_index:end]}'
+                                )
         elif logs_date:
             if logs_date and logs_extext:
                 for block in self.create_blocks():
@@ -181,14 +181,14 @@ class LogAnalyzer:
                     if key in logs_extext:
                         if self.fulltext == "True":
                             print(
-                            f'{Fore.LIGHTMAGENTA_EX} [{key}] {Style.RESET_ALL}'
-                            f'{value}'
-                            )
+                                f'{Fore.LIGHTMAGENTA_EX} [{key}] {Style.RESET_ALL}'
+                                f'{value}'
+                                )
                         else:
                             print(
-                            f'{Fore.LIGHTMAGENTA_EX} [{key}] {Style.RESET_ALL}'
-                            f'{value[:300]}'
-                            )
+                                f'{Fore.LIGHTMAGENTA_EX} [{key}] {Style.RESET_ALL}'
+                                f'{value[:300]}'
+                                )
 
     def find_by_text(self):
         log_by_text_list = []
@@ -230,7 +230,7 @@ class LogAnalyzer:
                     log_by_date_list.append(key)
                     date_found = True
         except Exception:
-            if date_found == False:
+            if not date_found:
                 print(f'Logs with date {Fore.RED} {self.date} {Style.RESET_ALL} not found')
 
         return log_by_date_list
