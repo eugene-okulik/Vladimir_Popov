@@ -58,6 +58,11 @@ def test_add_post(before_after_test, objects):
     assert response.status_code == 200, 'Status code is incorrect'
 
 
+def test_get_one_object(new_object_id, before_after_test):
+    response = requests.get(url=f"{url}/{new_object_id}")
+    assert response.status_code == 200, 'Status code is incorrect'
+
+
 def test_update_object_put(new_object_id, before_after_test):
     body = {
         "name": "Apple MacBook Pro 17",
