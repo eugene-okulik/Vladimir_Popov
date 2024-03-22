@@ -3,6 +3,7 @@ import requests
 
 url = "https://api.restful-api.dev/objects"
 
+
 @pytest.fixture()
 def new_object_id():
     body = {
