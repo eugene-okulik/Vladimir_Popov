@@ -44,7 +44,7 @@ def object_id():
 
 @pytest.fixture
 def get_all_objects_endpoint():
-    return  GetObjects()
+    return GetObjects()
 
 
 @pytest.fixture
