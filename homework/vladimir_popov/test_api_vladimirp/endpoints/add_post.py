@@ -2,6 +2,7 @@ import allure
 import requests
 from endpoints.endpoint import Endpoint
 
+
 class AddPost(Endpoint):
 
     @allure.step("Create new post")

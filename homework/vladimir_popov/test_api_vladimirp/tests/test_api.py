@@ -72,7 +72,7 @@ def test_update_object_patch(object_id, before_after_test, update_object_patch_e
 @allure.story("Posts")
 @allure.feature("Delete object")
 @allure.title("Test delete object")
-def test_delete_object(before_after_test, delete_object_endpoint, get_object_endpoint, object_id): 
+def test_delete_object(before_after_test, delete_object_endpoint, get_object_endpoint, object_id):
     delete_object_endpoint.delete_object_by_id(object_id)
     delete_object_endpoint.check_status_is_200()
     delete_object_endpoint.check_object_deleted(object_id)

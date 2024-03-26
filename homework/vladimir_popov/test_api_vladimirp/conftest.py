@@ -10,17 +10,20 @@ from endpoints.delete_object import DeleteObject
 
 url = "https://api.restful-api.dev/objects"
 
+
 @pytest.fixture(scope="session")
 def start_end_testing():
     print("Start testing")
     yield
     print("Testing completed")
 
+
 @pytest.fixture(scope="function")
 def before_after_test():
     print("before test")
     yield
     print("after test")
+
 
 @pytest.fixture()
 def object_id():
@@ -38,25 +41,31 @@ def object_id():
     yield object_id
     response = requests.delete(f'{url}/{object_id}')
 
+
 @pytest.fixture
 def get_all_objects_endpoint():
     return  GetObjects()
+
 
 @pytest.fixture
 def add_post_endpoint():
     return AddPost()
 
+
 @pytest.fixture
 def get_object_endpoint():
     return GetObjectsById()
+
 
 @pytest.fixture
 def update_object_put_endpoint():
     return UpdateObjectPut()
 
+
 @pytest.fixture
 def update_object_patch_endpoint():
     return UpdateObjectPatch()
+
 
 @pytest.fixture
 def delete_object_endpoint():
