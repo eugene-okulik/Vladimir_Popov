@@ -2,7 +2,7 @@ import requests
 import pytest
 import allure
 
-url = "https://api.restful-api.dev/objects"
+
 
 
 @allure.story("Posts")
@@ -10,6 +10,7 @@ url = "https://api.restful-api.dev/objects"
 @allure.title("Test get all posts")
 @pytest.mark.medium
 def test_get_all_posts(start_end_testing, before_after_test):
+    
     with allure.step("Get all posts"):
         response = requests.get(url=url)
     with allure.step("Check status code is 200"):
