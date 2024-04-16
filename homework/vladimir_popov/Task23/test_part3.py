@@ -35,5 +35,6 @@ def test_hello_world_is_displayed(driver):
     start_button.is_displayed()
     start_button.click()
     wait = WebDriverWait(driver, 15)
-    hello_world = wait.until(EC.visibility_of_element_located((By.XPATH, "//*[@id='finish']//*[text()='Hello World!']")))
+    hello_world = wait.until(EC.visibility_of_element_located((By.XPATH, "//*[@id='finish']"
+                                                               "//*[text()='Hello World!']")))
     assert hello_world.is_displayed()

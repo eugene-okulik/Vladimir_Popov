@@ -45,7 +45,9 @@ def choose_date_of_birth(day, month_of_birth, year):
     year_dropdown.click()
     month_dropdown.is_displayed()
     month_dropdown.click()
-    month = driver.find_element(By.XPATH, f'//select[@class="react-datepicker__month-select"]//option[text()="{month_of_birth}"]')
+    month = driver.find_element(By.XPATH, f'//select[@class="react-datepicker__month-select"]//option'
+                                f'[text()="{month_of_birth}"]'
+                                )
     month.click()
     month_dropdown.click()
     day = driver.find_element(By.XPATH, f'//div[contains(@aria-label,"{month_of_birth} {day}")]')
