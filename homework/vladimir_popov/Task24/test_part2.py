@@ -5,7 +5,8 @@ from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.common.action_chains import ActionChains
 
 
-cookies_confirm_button_locator = (By.XPATH, "//*[@class='fc-footer-buttons-container']//button[contains(@class, 'fc-cta-consent')]")
+cookies_confirm_button_locator = (By.XPATH, "//*[@class='fc-footer-buttons-container']"
+                                  "//button[contains(@class, 'fc-cta-consent')]")
 
 
 @pytest.fixture()
