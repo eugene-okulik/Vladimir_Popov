@@ -34,7 +34,7 @@ def test_item_added_to_cart(driver):
     add_to_card_button = driver.find_element(*add_to_card_button_locator)
     add_to_card_button.click()
     alert = Alert(driver)
-    sleep(1)
+    wait.until(EC.alert_is_present)
     alert.accept()
     wait.until(EC.visibility_of_element_located(cart_button_locator))
     cart_button = driver.find_element(*cart_button_locator)
