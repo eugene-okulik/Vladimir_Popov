@@ -2,8 +2,8 @@ from playwright.sync_api import Route, expect, Page
 import json
 import re
 
-def test_iphone(page: Page):
 
+def test_iphone(page: Page):
 
     def handle_route(route: Route):
         response = route.fetch()
@@ -11,7 +11,6 @@ def test_iphone(page: Page):
         body["body"]["digitalMat"][0]["familyTypes"][0]["productName"] = "яблокофон 15 про"
         body = json.dumps(body)
         route.fulfill(response=response, body=body)
-
 
     page.route(re.compile("digital-mat"), handle_route)
     page.goto("https://www.apple.com/shop/buy-iphone")
