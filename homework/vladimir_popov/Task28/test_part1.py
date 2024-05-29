@@ -1,6 +1,7 @@
-from playwright.sync_api import Route, Expect, Page
+from playwright.sync_api import Route, expect, Page
 import json
 import re
+from time import sleep
 
 
 def test_iphone(page: Page):
@@ -18,3 +19,5 @@ def test_iphone(page: Page):
     page.goto("https://www.apple.com/shop/buy-iphone")
     iphone_button = page.locator("//button[@data-trigger-id='digitalmat-1']")
     iphone_button.click()
+    title = page.locator("//*[@data-autom='DigitalMat-overlay-header-0-0']")
+    expect(title).to_have_text("яблокофон 15 про")
