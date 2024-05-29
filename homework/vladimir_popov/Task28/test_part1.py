@@ -1,8 +1,6 @@
 from playwright.sync_api import Route, expect, Page
 import json
 import re
-from time import sleep
-
 
 def test_iphone(page: Page):
 
