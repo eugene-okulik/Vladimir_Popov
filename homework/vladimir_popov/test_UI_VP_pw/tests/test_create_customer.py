@@ -4,7 +4,7 @@ import random
 
 first_name = "Max"
 last_name = "Mustermann"
-random_number = random.randint(1,10000)
+random_number = random.randint(1, 10000)
 email = f"max_mustermann{random_number}@email.com"
 password = "$Admin1234"
 my_account_page_url = "customer/account/"

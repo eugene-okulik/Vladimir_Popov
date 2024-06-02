@@ -19,10 +19,8 @@ class EcoFriendlyCollectionPage(BasePage):
         add_to_compare_button = self.find(add_to_compare_button_locator)
         add_to_compare_button.click()
 
-
     def check_compared_item_added(self):
         self.find(first_compare_item_locator)
-
 
     def add_item_to_cart(self):
         first_item = self.find(first_item_locator)
@@ -30,13 +28,11 @@ class EcoFriendlyCollectionPage(BasePage):
         add_to_cart_button = self.find(add_to_cart_button_locator)
         add_to_cart_button.click()
 
-
     def clear_compare_items(self):
         clear_compare_items_button = self.find(clear_compare_items_button_locator)
         clear_compare_items_button.click()
         popup_accept_button = self.find(popup_accept_button_locator)
         popup_accept_button.click()
-
 
     def check_compare_item_is_not_visible(self):
         first_item_locator = self.find(first_compare_item_locator)

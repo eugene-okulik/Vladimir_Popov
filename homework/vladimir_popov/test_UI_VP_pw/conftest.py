@@ -4,6 +4,7 @@ from pages.eco_friendly_collection_page import EcoFriendlyCollectionPage
 from pages.sales_page import SalesPage
 from playwright.sync_api import Page
 
+
 @pytest.fixture
 def create_customer_page(page: Page):
     return CreateCustomerPage(page)
