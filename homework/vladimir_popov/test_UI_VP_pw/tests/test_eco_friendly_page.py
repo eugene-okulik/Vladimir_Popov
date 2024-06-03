@@ -14,7 +14,7 @@ def test_add_item_to_compare(eco_friendly_collection_page):
 def test_add_item_to_cart(eco_friendly_collection_page):
     eco_friendly_collection_page.open_page()
     eco_friendly_collection_page.add_item_to_cart()
-    eco_friendly_collection_page.check_page(first_item_page)
+    eco_friendly_collection_page.check_page_url(first_item_page)
 
 
 def test_clear_comare_items(eco_friendly_collection_page):

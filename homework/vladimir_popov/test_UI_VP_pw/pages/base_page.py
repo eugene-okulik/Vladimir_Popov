@@ -17,7 +17,7 @@ class BasePage:
     def find(self, locator) -> Locator:
         return self.page.locator(locator).first
 
-    def check_page(self, check_page):
+    def check_page_url(self, check_page):
         print(f"PAGE: {self.page.url}")
         self.page.wait_for_url(f"{self.base_url}/{check_page}")
         assert self.page.url == f"{self.base_url}/{check_page}"
