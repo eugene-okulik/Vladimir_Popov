@@ -1,0 +1,16 @@
+FROM jenkins/jenkins:lts-jdk17
+USER root
+RUN apt-get update
+RUN apt-get install -y python3 python3-venv python3-pip wget xvfb unzip
+RUN wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | apt-key add -
+RUN sh -c 'echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google>RUN apt-get update && apt-get install -y google-chrome-stable
+
+ENV CHROMEDRIVER_VERSION 2.19
+ENV CHROMEDRIVER_DIR /chromedriver
+RUN mkdir $CHROMEDRIVER_DIR
+
+RUN wget -q --continue -P $CHROMEDRIVER_DIR "http://chromedriver.storage.googleapis.com/$CHROMEDRIVER_VERSION/chromedri>RUN unzip $CHROMEDRIVER_DIR/chromedriver* -d $CHROMEDRIVER_DIR
+
+ENV PATH $CHROMEDRIVER_DIR:$PATH
+
+USER jenkins
